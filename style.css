@@ -18,7 +18,7 @@ header{
     justify-content: center;
 }
 body{
-    background-color: rgb(243, 247, 248);
+    background-color: rgb(243, 248, 243);
     margin-top:0;
     margin-left:0;
 }
@@ -43,4 +43,11 @@ header a:hover{
     margin-top:10px;
     width:20vw;
     border-radius: 20px;
+}
+
+.logcontainer{
+    width:60vw
+}
+.credit-feature{
+    margin-bottom:0px;
 }
