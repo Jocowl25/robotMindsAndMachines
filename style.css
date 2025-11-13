@@ -18,6 +18,7 @@ header{
     justify-content: center;
     position: sticky;
     top:0;
+    z-index:9999;
 }
 body{
     background-color: rgb(222, 255, 222);
