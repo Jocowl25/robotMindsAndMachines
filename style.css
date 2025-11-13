@@ -44,6 +44,7 @@ header a:hover{
     margin-top:10px;
     width:20vw;
     border-radius: 20px;
+    animation: 3s infinite linear color;
 }
 
 .logcontainer{
@@ -62,3 +63,29 @@ header a:hover{
     margin-bottom:5px;
     padding:0;
 }
+h1,h2{
+      font-family: "WDXL Lubrifont SC", sans-serif;
+}
+header,body{
+     font-family: "Oxanium", sans-serif;
+    font-optical-sizing: auto;
+}
+
+@keyframes color{
+    0%{
+        filter: hue-rotate(0);
+    }
+    25%{
+        filter: hue-rotate(90deg);
+    }
+    50%{
+        filter: hue-rotate(180deg);
+    }
+    75%{
+        filter: hue-rotate(270deg);
+    }
+    100%{
+        filter: hue-rotate(360deg);
+    }
+}
+
