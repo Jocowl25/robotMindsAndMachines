@@ -39,3 +39,8 @@ header a:hover{
 .day{
     text-decoration: underline;
 }
+.robot-title{
+    margin-top:10px;
+    width:20vw;
+    border-radius: 20px;
+}
