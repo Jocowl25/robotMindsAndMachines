@@ -1,29 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Minds and Machines</title>
-    <link rel="stylesheet" href="style.css">
-  </head>
-  <body>
-    <header>
-        <a href="./index.html">Home</a>
-        <a href="./log.html">Daily log</a>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wumpus - Home</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <header>
+    <a href="./index.html">Home</a>
+    <a href="./algorithm.html">The Algorithm</a>
+    <a href="./log.html">Daily log</a>
+    <a href="./results.html">Results</a>
+    <a href="./discussion.html">Discussion</a>
   </header>
   <div class="flex">
     <h1>
-    Wumpus World project!
+      Wumpus World Project!
     </h1>
     <p class="credit">By Jocelyn Adelstein, Charles Agnew, and Arunabh Ramesh</p>
-        <p class="credit-feature">Featuring Dave the robot:</p>
+    <p class="credit-feature">Featuring Dave the robot:</p>
     <img class="robot-title" src="./media/robot.png">
   </div>
   <br>
   <div class="flex">
     <h3>What is Wumpus World?</h3>
-    <p>In Wumpus World, Dave must retrieve the goal from the evil Wumpus. Unfortunately, Dave has [ADD MORE]</p>
+    <p class="wumpusDesc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In Wumpus World, Dave must retrieve the gold
+      from the evil Wumpus. Wumpus World consists of a 4x4 grid, such as the one shown below. </p>
+    <img class="board" src="media/sample_wumpus_board.jpg">
+    <p class="wumpusDesc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;If Dave drives into the pits or into the
+      Wumpus itself, Dave immediately loses. Unfortunately, Dave does not know the state of the squares around him.
+      Instead, Dave is only told if an adjacent square is dangerous: he feels a breeze if there is a pit, he sees a
+      glitter if there is gold, and he senses a smell when the Wumpus is nearby. Dave is not told which square this
+      sense is coming from—just that there is or there is not something nearby.</p>
+    <p class="wumpusDesc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;To win, Dave must successfully collect the gold and return back
+      to the start (the bottom left corner of the grid). Sometimes, the Wumpus is blocking the path to the gold; in that
+      case, Dave can try to kill the Wumpus with an arrow. However, he can only attempt this once.</p>
+    <p class="wumpusDesc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This website documents our efforts to help Dave succeed.
+    </p>
   </div>
-    <script src="index.js"></script>
-  </body>
+  <br>
+  <br>
+  <script src="index.js"></script>
+</body>
+
 </html>

@@ -16,9 +16,11 @@ header{
     display:flex;
     align-items:center;
     justify-content: center;
+    position: sticky;
+    top:0;
 }
 body{
-    background-color: rgb(243, 248, 243);
+    background-color: rgb(222, 255, 222);
     margin-top:0;
     margin-left:0;
 }
@@ -29,7 +31,6 @@ header a{
     text-decoration: none;
 }
 header a:hover{
-    color:rgb(255, 255, 255);
     text-decoration: underline;
 }
 .credit{
@@ -50,4 +51,14 @@ header a:hover{
 }
 .credit-feature{
     margin-bottom:0px;
+}
+.board{
+    width:10vw;
+    margin:10px;
+}
+.wumpusDesc{
+    width:max(60%,450px);
+    margin-top: 5px;
+    margin-bottom:5px;
+    padding:0;
 }
