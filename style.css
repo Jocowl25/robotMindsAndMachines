@@ -63,6 +63,7 @@ header a:hover{
     margin-top: 5px;
     margin-bottom:5px;
     padding:0;
+    text-indent:4ch;
 }
 h1,h2{
       font-family: "WDXL Lubrifont SC", sans-serif;
