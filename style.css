@@ -91,3 +91,7 @@ header,body{
     }
 }
 
+.algorithm-img{
+    border-radius:20px;
+    width:20vw;
+}
