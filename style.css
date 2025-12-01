@@ -95,3 +95,14 @@ header,body{
     border-radius:20px;
     width:20vw;
 }
+
+.moveTestVid{
+    width:50%;
+}
+
+.movVidDiv{
+    display:flex;
+    align-items:center;
+    width:50%;
+    gap:20px;
+}
