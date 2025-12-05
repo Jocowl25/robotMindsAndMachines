@@ -295,7 +295,7 @@ while(i<len(safes)):
             pos = (j,k)
             if pos in found_set:
 
-                currentline = "X"+"X"+currentline
+                currentline = "X"+"|"+currentline
             else:
                 if(total_board[pos[0]][pos[1]].gold):
                     currentline = "G"+"|"+currentline
