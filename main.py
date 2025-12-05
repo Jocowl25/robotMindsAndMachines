@@ -10,6 +10,7 @@ class tile(object):
         self.tuple_int_postion = tuple_int_postion_temp 
         self.safe = safe_temp
         self.gold = False
+        self.wumpus_possiblity =False
 
     def print_tile(tile):
         print(" ("+str(tile.tuple_int_postion[0])+" , "+str(tile.tuple_int_postion[1])+") ")
@@ -19,6 +20,7 @@ class tile(object):
             return
         
         if(tile.safe == True and len(tile.arr_pings_on) ==0 ):
+            tile.wumpus_possiblity =False
             return
         if( len(arr_new_ping_on) == 0):
             tile.safe =True
@@ -29,15 +31,19 @@ class tile(object):
         # p = pit
         # m = wompus
         # g = gold
+        if "m" in arr_new_ping_on:
+            tile.wumpus_possiblity = True
 
         
         if(len(tile.arr_pings_on) == 0 ):
+            
             if(len(arr_new_ping_on)==1 and arr_new_ping_on[0]== "g"):
                     
                     tile.safe =True
                     return
             tile.arr_pings_on = arr_new_ping_on             
         else:
+            
             if(len(arr_new_ping_on)==len(tile.arr_pings_on)):
                 return
 
@@ -135,14 +141,14 @@ def plot_movement(current_postion,nextpostion,found,set_of_locations):
             
             if((cur_X !=len(total_board)-1) and  (found ==False)):
                 if(cur_X+1,cur_y) in temp:
-                    print()
+                    t = False
                     
                 else:
                     found = plot_movement((cur_X+1,cur_y),nextpostion,found,temp)
                     
             if(cur_y !=len(total_board[cur_X])-1 and (found ==False)):
                 if(cur_X,cur_y+1) in temp:
-                    print()
+                    t = False
                     
                 else:
                     found =  plot_movement((cur_X,cur_y+1),nextpostion,found,temp)
@@ -150,27 +156,19 @@ def plot_movement(current_postion,nextpostion,found,set_of_locations):
 
             if((cur_X !=0 ) and (found ==False)):
                 if(cur_X-1,cur_y) in temp:
-                    print()
+                    t = False
                     
                 else:
                     found = plot_movement((cur_X-1,cur_y),nextpostion,found,temp)
-                    
-                    
-                
-            
-        
-            
+             
             if(cur_y!=0 and (found ==False)):
                 if(cur_X,cur_y-1) in temp:
-                    print()
-                    
-                    
+                    t = False
                 else:
                     found = plot_movement((cur_X,cur_y-1),nextpostion,found,temp)
             if(not(found)):
                 temp.pop()
-            return found  
-                
+            return found         
     else:
         temp.pop()
         return False
@@ -191,7 +189,7 @@ def alocating_pings(current_postion):
         next_x = cur_X+1
         next_y = cur_y
         total_board[next_x][next_y].determine_tile_safeness(array_of_pings)
-        print((total_board[next_x][next_y].safe))
+        
         if(total_board[next_x][next_y].safe ==True):
             if (next_x,next_y) in safes:
                 temp =True
@@ -202,7 +200,6 @@ def alocating_pings(current_postion):
         next_x = cur_X
         next_y = cur_y+1
         total_board[next_x][next_y].determine_tile_safeness(array_of_pings)
-        print((total_board[next_x][next_y].safe))
         if(total_board[next_x][next_y].safe ==True):
             if (next_x,next_y) in safes:
                 temp =True
@@ -213,7 +210,6 @@ def alocating_pings(current_postion):
         next_x = cur_X-1
         next_y = cur_y
         total_board[next_x][next_y].determine_tile_safeness(array_of_pings)
-        print((total_board[next_x][next_y].safe))
         if(total_board[next_x][next_y].safe ==True):
             if (next_x,next_y) in safes:
                 temp =True
@@ -223,7 +219,6 @@ def alocating_pings(current_postion):
         next_x = cur_X
         next_y = cur_y
         total_board[next_x][next_y].determine_tile_safeness(array_of_pings)
-        print((total_board[next_x][next_y].safe))
         if(total_board[next_x][next_y].safe ==True):
             if (next_x,next_y) in safes:
                 temp =True
@@ -245,7 +240,7 @@ def  update_the_knowns(current_postion):
             pos = (j,k)
             if(total_board[j][k].safe):
                 continue
-            elif(len(total_board[j][k].arr_pings_on)):
+            elif(len(total_board[j][k].arr_pings_on)==0):
                 continue
             else:
                 for temp in range(len(total_board[j][k].arr_pings_on)):
@@ -257,7 +252,24 @@ def  update_the_knowns(current_postion):
                         num_gold = num_gold +1
     if(num_gold ==1):
         total_board[ping_of_one[0]][ping_of_one[1]].gold = True
+
     
+    for k in range(4):
+        
+        for j in range(4):
+            pos = (j,k)
+            if(total_board[j][k].safe):
+                continue
+            elif(len(total_board[j][k].arr_pings_on)==0):
+                continue
+            else:
+                for temp in range(len(total_board[j][k].arr_pings_on)):
+                    if (total_board[j][k].arr_pings_on[temp] =="g"):
+                        if(removing):
+                            total_board[j][k].arr_pings_on.pop(temp)
+                        elif(num_gold == 0):
+                            ping_of_one = (j,k)
+                        num_gold = num_gold +1
 
 
 
@@ -275,9 +287,8 @@ while(i<len(safes)):
     found_set = []
     plot_movement(safes[i],safes[next],False,found_set)
     print(len(found_set))
-    for l in found_set:
-        total_board[l[0]][l[1]].print_tile()
     i=i+1
+    #where to put move function
     for k in range(4):
         currentline =""
         for j in range(4):
@@ -308,3 +319,8 @@ for k in range(4):
             else:
                 currentline = " "+"|"+currentline
     print(currentline)
+
+
+
+
+    
