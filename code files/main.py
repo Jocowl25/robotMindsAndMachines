@@ -239,7 +239,7 @@ class tile(object):
         
 
 
-#creates 
+#creates boards
 one_wopus_space =False
 first_row = [tile([0,0]),tile([0,1]),tile([0,2]),tile([0,3])]
 second_row = [tile([1,0]),tile([1,1]),tile([1,2]),tile([1,3])]
