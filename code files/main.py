@@ -134,6 +134,7 @@ def back_a_bit():
     robot.m1_backward(3)
     robot.m2_backward(3)
     time.sleep(0.5)
+    robot.stop()
 
 def go_up():
     drive_to_next_line()
