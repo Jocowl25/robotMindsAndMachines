@@ -173,6 +173,7 @@ def get_bluetooth_signal(): #0 safe, dont add, 1 wumpus m, 2 pit p, 3 glitter g,
             values.append("g") #gold surrounding
         elif response==4:
             values.append("G") #on gold
+        response = ble.read()
         return values
 try:
     find_and_center_on_line()
