@@ -137,16 +137,20 @@ def go_down():
     turn_left_90()
     turn_left_90()
     drive_to_next_line()
+    drive_to_next_line()
     turn_left_90()
     turn_left_90()
+    drive_to_next_line()
 
 def go_right():
     turn_right_90()
+    drive_to_next_line()
     drive_to_next_line()
     turn_left_90()
 
 def go_left():
     turn_left_90()
+    drive_to_next_line()
     drive_to_next_line()
     turn_right_90()
 
