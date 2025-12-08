@@ -130,6 +130,11 @@ def turn_left_90():
     facing = (facing - 1) % 4
     print(f"Turned left. Now facing: {facing}")
 
+def back_a_bit():
+    robot.m1_backward(3)
+    robot.m2_backward(3)
+    time.sleep(0.5)
+
 def go_up():
     drive_to_next_line()
 
@@ -144,12 +149,14 @@ def go_down():
 
 def go_right():
     turn_right_90()
+    back_a_bit()
     drive_to_next_line()
     drive_to_next_line()
     turn_left_90()
 
 def go_left():
     turn_left_90()
+    back_a_bit()
     drive_to_next_line()
     drive_to_next_line()
     turn_right_90()
