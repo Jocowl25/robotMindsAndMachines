@@ -26,8 +26,8 @@ class tile(object):
             tile.safe =True
             tile.arr_pings_on = []
             return
-            #add  wopus check to see if only one 
-            #add  coins check to see if only one 
+            
+            
         # p = pit
         # m = wompus
         # g = gold
@@ -45,6 +45,9 @@ class tile(object):
         else:
             
             if(len(arr_new_ping_on)==len(tile.arr_pings_on)):
+                if((len(arr_new_ping_on)==1) and not(arr_new_ping_on[0] == tile.arr_pings_on[0] ) ):
+                    tile.arr_pings_on =[]
+                    tile.safe =True
                 return
 
             if(len(arr_new_ping_on)<len(tile.arr_pings_on)):
@@ -57,7 +60,7 @@ class tile(object):
             return
         
         
-
+one_wopus_space =False
 first_row = [tile([0,0]),tile([0,1]),tile([0,2]),tile([0,3])]
 second_row = [tile([1,0]),tile([1,1]),tile([1,2]),tile([1,3])]
 third_row = [tile([2,0]),tile([2,1]),tile([2,2]),tile([2,3])]
@@ -109,7 +112,7 @@ def input_of_danger(current_postion):
 
     print("at location " +str(current_postion[0])+ ","+str(current_postion[1]))
     temp = input("Give the danger level ").split()
-    print(len(temp))
+    
 
     return temp
     
@@ -176,13 +179,17 @@ def plot_movement(current_postion,nextpostion,found,set_of_locations):
 
 safes =[(0,0)]
 total_board[0][0].safe =True
-  
+wompus_detected_cord = (-1,-1)
 def alocating_pings(current_postion):
     global total_board
     global safes
+    global wompus_detected_cord
     array_of_pings = input_of_danger(current_postion)
     if "G" in array_of_pings:
         return True
+
+    if "m" in array_of_pings:
+        wompus_detected_cord = current_postion
     cur_X = current_postion[0]
     cur_y = current_postion[1]
     if((cur_X !=len(total_board)-1)):
@@ -226,9 +233,12 @@ def alocating_pings(current_postion):
                 safes.append((next_x,next_y))
     
     return False
+ 
 
-def  update_the_knowns(current_postion):
+wompus_cords = (-1,-1)
+def  update_the_knowns_golds(current_postion):
     global total_board
+    
     num_gold = 0
     ping_of_one =(-1,-1)
     removing = True
@@ -253,6 +263,12 @@ def  update_the_knowns(current_postion):
     if(num_gold ==1):
         total_board[ping_of_one[0]][ping_of_one[1]].gold = True
 
+def  update_the_knowns_wompus(current_postion):
+    global total_board
+    global one_wopus_space
+    global wompus_cords
+    ping_of_one =(-1,-1)
+    num_wompus = 0
     
     for k in range(4):
         
@@ -264,30 +280,77 @@ def  update_the_knowns(current_postion):
                 continue
             else:
                 for temp in range(len(total_board[j][k].arr_pings_on)):
-                    if (total_board[j][k].arr_pings_on[temp] =="g"):
-                        if(removing):
-                            total_board[j][k].arr_pings_on.pop(temp)
-                        elif(num_gold == 0):
+                    if (total_board[j][k].arr_pings_on[temp] =="m"):
+                        if(num_wompus == 0):
                             ping_of_one = (j,k)
-                        num_gold = num_gold +1
+                        num_wompus = num_wompus +1
+    if(num_wompus==1):
+        one_wopus_space =True
+        wompus_cords = ping_of_one
+
+
+rotation = "North"
+def doing_moveing(temp_found_set):
+    global total_board
+    global rotation
+    for i in range(len(temp_found_set)):
+        current_postion = temp_found_set[i]
+        if (i == len(temp_found_set)-1):
+            return
+        next_postion = temp_found_set[i+1]
+
+        cur_x = current_postion[0]
+        cur_y = current_postion[1]
+        if((cur_x,cur_y+1) ==next_postion):
+            rotation = "South"
+        elif((cur_x,cur_y-1) ==next_postion):
+            rotation ="North"
+        elif((cur_x-1,cur_y) ==next_postion):
+            rotation ="East"
+        elif((cur_x+1,cur_y) ==next_postion):
+            rotation ="West"
+        print(rotation)
+
 
 
 
 i = 0
-while(i<len(safes)):
+while((i<len(safes))):
+    
     if(alocating_pings(safes[i])):
         found_set = []
         plot_movement(safes[i],(0,0),False,found_set)
         print(len(found_set))
        
         break 
-    update_the_knowns(safes[i])
+
+    update_the_knowns_golds(safes[i])
+    update_the_knowns_wompus(safes[i])
     print(len(safes))
     next = i + 1
     found_set = []
-    plot_movement(safes[i],safes[next],False,found_set)
-    print(len(found_set))
-    i=i+1
+    if( i == len(safes)-1):
+        if(one_wopus_space==True):
+            print("shot wompus")
+            
+
+            plot_movement(safes[i],wompus_detected_cord,False,found_set)
+            doing_moveing(found_set)
+            total_board[wompus_cords[0]][wompus_cords[1]].wumpus_possiblity =False
+            total_board[wompus_cords[0]][wompus_cords[1]].safe =True
+            safes.append(wompus_cords)
+            one_wopus_space =False
+            i=i+1
+            
+        else:
+            print("not possible")
+            break
+    else:
+        
+        plot_movement(safes[i],safes[next],False,found_set)
+        doing_moveing(found_set)
+        print(len(found_set))
+        i=i+1
     #where to put move function
     for k in range(4):
         currentline =""
@@ -304,7 +367,7 @@ while(i<len(safes)):
                 else:
                     currentline = " "+"|"+currentline
         print(currentline)
-
+doing_moveing(found_set)
 for l in found_set:
     total_board[l[0]][l[1]].print_tile()
 for k in range(4):
