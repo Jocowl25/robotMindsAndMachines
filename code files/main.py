@@ -488,7 +488,7 @@ def marking_as_vistited(temp_found_set):
     for i in temp_found_set:
         total_board[i[0]][i[1]].visted = True
 
-
+#START OF CODE
 i = 0
 while((i<len(safes))):
     update_the_knowns_golds(safes[i])
