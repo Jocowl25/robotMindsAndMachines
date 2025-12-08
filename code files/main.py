@@ -1,9 +1,11 @@
-from nanonav import NanoBot
+from nanonav import BLE, NanoBot
 import time
 from machine import Pin
 Pin(28, Pin.OUT).on()
 
 robot = NanoBot()
+
+ble = BLE(name="NanoNav2")
 
 SEARCH_SPEED   = 20
 ALIGN_SPEED    = 15
@@ -148,6 +150,19 @@ def go_left():
     drive_to_next_line()
     turn_right_90()
 
+def get_bluetooth_signal(): #0 safe, dont add, 1 wumpus m, 2 pit p, 3 glitter g, 4 gold G 5 done
+    response = ble.read()
+    values=[]
+    while response!=5 or response!=0: #signal done or safe respectively
+        if response==1: #
+            values.append("m") #wumpus
+        elif response==2:
+            values.append("p") #pit
+        elif response==3:
+            values.append("g") #gold surrounding
+        elif response==4:
+            values.append("G") #on gold
+        return values
 try:
     find_and_center_on_line()
     go_up()
