@@ -536,34 +536,7 @@ while((i<len(safes))):
         
         i=i+1
     #where to put move function
-    for k in range(4):
-        currentline =""
-        for j in range(4):
-            pos = (j,k)
-            if pos in found_set:
-
-                currentline = "X"+"|"+currentline
-            else:
-                if(total_board[pos[0]][pos[1]].gold):
-                    currentline = "G"+"|"+currentline
-                elif(not(total_board[pos[0]][pos[1]].safe)and len(total_board[pos[0]][pos[1]].arr_pings_on) >0):
-                    currentline = "D"+"|"+currentline
-                else:
-                    currentline = " "+"|"+currentline
-        print(currentline)
+    
 doing_moveing(found_set)
-for l in found_set:
-    total_board[l[0]][l[1]].print_tile()
-for k in range(4):
-    currentline =""
-    for j in range(4):
-        pos = (j,k)
-        if pos in found_set:
-            currentline = "X"+"X"+currentline
-        else:
-            if(total_board[pos[0]][pos[1]].gold):
-                currentline = "G"+"|"+currentline
-            else:
-                currentline = " "+"|"+currentline
-    print(currentline)
+
 
