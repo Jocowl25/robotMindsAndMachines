@@ -1,5 +1,4 @@
-import array
-import sys 
+
 
 
 class tile(object):
@@ -75,7 +74,7 @@ total_board[0][0].safe =True
 def input_of_danger(current_postion):
 
     print("at location " +str(current_postion[0])+ ","+str(current_postion[1]))
-    temp = input("Give the danger level ").split()
+    temp = get_bluetooth_signal()
     
 
     return temp
@@ -275,18 +274,25 @@ def doing_moveing(temp_found_set):
         if (i == len(temp_found_set)-1):
             return
         next_postion = temp_found_set[i+1]
-
         cur_x = current_postion[0]
         cur_y = current_postion[1]
+        #go south
         if((cur_x,cur_y+1) ==next_postion):
             rotation = "South"
+            go_down()
+        #go North
         elif((cur_x,cur_y-1) ==next_postion):
             rotation ="North"
+            go_up()
+        #go east
         elif((cur_x-1,cur_y) ==next_postion):
             rotation ="East"
+            go_right()
+        #go west
         elif((cur_x+1,cur_y) ==next_postion):
             rotation ="West"
-        print(rotation)
+            go_left()
+        
 
 def marking_as_vistited(temp_found_set):
     global total_board 
