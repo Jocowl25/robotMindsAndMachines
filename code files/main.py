@@ -179,18 +179,13 @@ def get_bluetooth_signal(): #0 safe, dont add, 1 wumpus m, 2 pit p, 3 glitter g,
             values.append("G") #on gold
         response = ble.read()
         return values
-try:
-    find_and_center_on_line()
-    go_up()
-    go_down()
-    go_left()
-    go_right()
-    robot.stop()
 
-except KeyboardInterrupt:
-    robot.stop()
-    print("\nStopped by user")
-
+find_and_center_on_line()
+go_up()
+go_down()
+go_left()
+go_right()
+robot.stop()
 
 ##start of algorythm 
 
