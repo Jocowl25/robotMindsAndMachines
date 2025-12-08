@@ -128,32 +128,62 @@ def turn_left_90():
     facing = (facing - 1) % 4
     print(f"Turned left. Now facing: {facing}")
 
-def go_up():
-    drive_to_next_line()
-
-def go_down():
-    turn_left_90()
-    turn_left_90()
-    drive_to_next_line()
-    turn_left_90()
-    turn_left_90()
-
-def go_right():
-    turn_right_90()
-    drive_to_next_line()
-    turn_left_90()
-
-def go_left():
-    turn_left_90()
-    drive_to_next_line()
-    turn_right_90()
-
 try:
+    print("=== Starting Figure 8 Sequence ===")
+    print(f"Starting position: ({position_x}, {position_y}) - Bottom Right")
+    print("Facing: 0=North, 1=West, 2=South, 3=East")
+    
     find_and_center_on_line()
-    go_up()
-    go_down()
-    go_left()
-    go_right()
+    time.sleep(1.0)
+    
+    print("\nMove 1: Forward")
+    drive_to_next_line()
+    
+    print("\nMove 2: Turn right")
+    turn_right_90()
+    
+    print("\nMove 3: Forward")
+    drive_to_next_line()
+    
+    print("\nMove 4: Turn left")
+    turn_left_90()
+    
+    print("\nMove 5: Forward")
+    drive_to_next_line()
+    
+    print("\nMove 6: Turn left")
+    turn_left_90()
+    
+    print("\nMove 7: Forward")
+    drive_to_next_line()
+    
+    print("\nMove 8: Turn left")
+    turn_left_90()
+    
+    print("\nMove 9: Forward")
+    drive_to_next_line()
+    
+    print("\nMove 10: Turn left")
+    turn_left_90()
+    
+    print("\nMove 11: Forward")
+    drive_to_next_line()
+    
+    print("\nMove 12: Turn right")
+    turn_right_90()
+    
+    print("\nMove 13: Forward")
+    drive_to_next_line()
+    
+    print("\nMove 14: Turn right")
+    turn_right_90()
+    
+    print("\nMove 15: Forward (returning to start)")
+    drive_to_next_line()
+    
+    print(f"\n=== Figure 8 Complete! ===")
+    print(f"Final position: ({position_x}, {position_y})")
+    print(f"Expected: (0, 0)")
     robot.stop()
 
 except KeyboardInterrupt:
