@@ -17,6 +17,7 @@ class tile(object):
 
     def determine_tile_safeness(tile ,arr_new_ping_on):
         if(tile.gold):
+            tile.safe = True
             return
         
         if(tile.safe == True and len(tile.arr_pings_on) ==0 ):
@@ -74,7 +75,8 @@ total_board[0][0].safe =True
 def input_of_danger(current_postion):
 
     print("at location " +str(current_postion[0])+ ","+str(current_postion[1]))
-    temp = get_bluetooth_signal()
+    temp = input("give danger level ")
+    #temp = get_bluetooth_signal()
     
 
     return temp
@@ -213,7 +215,7 @@ def  update_the_knowns_golds(current_postion):
     global gold_cords
     num_gold = 0
     ping_of_one =(-1,-1)
-    removing = True
+    removing = False
     if(total_board[current_postion[0]][current_postion[1]].gold):
         removing = True
     for k in range(4):
@@ -232,8 +234,9 @@ def  update_the_knowns_golds(current_postion):
                         elif(num_gold == 0):
                             ping_of_one = (j,k)
                         num_gold = num_gold +1
-    if(num_gold ==1):
+    if(num_gold ==1 and gold_found != True):
         total_board[ping_of_one[0]][ping_of_one[1]].gold = True
+        total_board[ping_of_one[0]][ping_of_one[1]].safe = True
         gold_cords = ping_of_one
         gold_found = True
 
@@ -279,19 +282,19 @@ def doing_moveing(temp_found_set):
         #go south
         if((cur_x,cur_y+1) ==next_postion):
             rotation = "South"
-            go_down()
+            #go_down()
         #go North
         elif((cur_x,cur_y-1) ==next_postion):
             rotation ="North"
-            go_up()
+            #go_up()
         #go east
         elif((cur_x-1,cur_y) ==next_postion):
             rotation ="East"
-            go_right()
+            #go_right()
         #go west
         elif((cur_x+1,cur_y) ==next_postion):
             rotation ="West"
-            go_left()
+            #go_left()
         
 
 def marking_as_vistited(temp_found_set):
@@ -302,12 +305,9 @@ def marking_as_vistited(temp_found_set):
 
 i = 0
 while((i<len(safes))):
-    update_the_knowns_golds(safes[i])
-    if(gold_found):
-        plot_movement(safes[i],gold_cords,False,found_set)
-        i=i+1
-        
-    if(alocating_pings(safes[i])):
+    
+    #(safes[i]==gold_cords) or
+    if( alocating_pings(safes[i])):
         found_set = []
         plot_movement(safes[i],(0,0),False,found_set)
         marking_as_vistited(found_set)
@@ -315,7 +315,7 @@ while((i<len(safes))):
        
         break 
 
-    
+    update_the_knowns_golds(safes[i])
     update_the_knowns_wompus(safes[i])
     print(len(safes))
     next = i + 1
