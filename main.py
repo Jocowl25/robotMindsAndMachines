@@ -193,7 +193,7 @@ def alocating_pings(current_postion):
                 safes.append((next_x,next_y))
     if((cur_y !=0 )):
         next_x = cur_X
-        next_y = cur_y
+        next_y = cur_y - 1
         total_board[next_x][next_y].determine_tile_safeness(array_of_pings)
         if(total_board[next_x][next_y].safe ==True):
             if (next_x,next_y) in safes:
