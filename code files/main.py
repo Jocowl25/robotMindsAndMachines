@@ -339,6 +339,7 @@ def plot_movement(current_postion,nextpostion,found,set_of_locations):
 safes =[(0,0)]
 total_board[0][0].safe =True
 total_board[0][0].visted = True
+
 wompus_detected_cord = (-1,-1)
 def alocating_pings(current_postion):
     global total_board
@@ -396,12 +397,11 @@ def alocating_pings(current_postion):
  
 
 wompus_cords = (-1,-1)
-gold_found = False
-gold_cords = (-1,-1)
+
+
 def  update_the_knowns_golds(current_postion):
     global total_board
-    global gold_found
-    global gold_cords
+    
     num_gold = 0
     ping_of_one =(-1,-1)
     removing = False
@@ -426,8 +426,7 @@ def  update_the_knowns_golds(current_postion):
     if(num_gold ==1 and gold_found != True):
         total_board[ping_of_one[0]][ping_of_one[1]].gold = True
         total_board[ping_of_one[0]][ping_of_one[1]].safe = True
-        gold_cords = ping_of_one
-        gold_found = True
+       
 
 
 
@@ -457,10 +456,10 @@ def  update_the_knowns_wompus(current_postion):
         wompus_cords = ping_of_one
 
 
-rotation = "North"
+
 def doing_moveing(temp_found_set):
     global total_board
-    global rotation
+    
     for i in range(len(temp_found_set)):
         current_postion = temp_found_set[i]
         if (i == len(temp_found_set)-1):
@@ -470,19 +469,19 @@ def doing_moveing(temp_found_set):
         cur_y = current_postion[1]
         #go south
         if((cur_x,cur_y+1) ==next_postion):
-            rotation = "South"
+            
             go_down()
         #go North
         elif((cur_x,cur_y-1) ==next_postion):
-            rotation ="North"
+            
             go_up()
         #go east
         elif((cur_x-1,cur_y) ==next_postion):
-            rotation ="East"
+            
             go_right()
         #go west
         elif((cur_x+1,cur_y) ==next_postion):
-            rotation ="West"
+           
             go_left()
         
 
