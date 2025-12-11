@@ -2,7 +2,6 @@ from nanonav import BLE, NanoBot
 import time
 from machine import Pin
 Pin(28, Pin.OUT).on()
-gc.collect()
 robot = NanoBot()
 robot.stop()
 ble = BLE(name="NanoNav2")
@@ -536,7 +535,7 @@ while((i<len(safes))):
         doing_moveing(found_set)
         
         i=i+1
-    
+    #where to put move function
     
 doing_moveing(found_set)
 
