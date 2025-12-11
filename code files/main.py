@@ -166,6 +166,11 @@ def go_left():
     robot.stop()
 
 def get_bluetooth_signal(): #0 safe, dont add, 1 wumpus m, 2 pit p, 3 glitter g, 4 gold G 5 done
+    ble.send(10)
+    response=ble.read()
+    while response==10:
+        response=ble.read()
+        time.sleep(0.5)
     response = ble.read()
     values=[]
     while response!=5 or response!=0: #signal done or safe respectively
