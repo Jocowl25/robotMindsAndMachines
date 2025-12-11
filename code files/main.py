@@ -134,9 +134,11 @@ def back_a_bit():
     robot.m1_backward(3)
     robot.m2_backward(3)
     time.sleep(0.5)
+    robot.stop()
 
 def go_up():
     drive_to_next_line()
+    robot.stop()
 
 def go_down():
     turn_left_90()
@@ -146,6 +148,7 @@ def go_down():
     turn_left_90()
     turn_left_90()
     drive_to_next_line()
+    robot.stop()
 
 def go_right():
     turn_right_90()
@@ -153,6 +156,7 @@ def go_right():
     drive_to_next_line()
     drive_to_next_line()
     turn_left_90()
+    robot.stop()
 
 def go_left():
     turn_left_90()
@@ -160,6 +164,7 @@ def go_left():
     drive_to_next_line()
     drive_to_next_line()
     turn_right_90()
+    robot.stop()
 
 def get_bluetooth_signal(): #0 safe, dont add, 1 wumpus m, 2 pit p, 3 glitter g, 4 gold G 5 done
     response = ble.read()
@@ -173,19 +178,15 @@ def get_bluetooth_signal(): #0 safe, dont add, 1 wumpus m, 2 pit p, 3 glitter g,
             values.append("g") #gold surrounding
         elif response==4:
             values.append("G") #on gold
+        response = ble.read()
         return values
-try:
-    find_and_center_on_line()
-    go_up()
-    go_down()
-    go_left()
-    go_right()
-    robot.stop()
 
-except KeyboardInterrupt:
-    robot.stop()
-    print("\nStopped by user")
-
+find_and_center_on_line()
+go_up()
+go_down()
+go_left()
+go_right()
+robot.stop()
 
 ##start of algorythm 
 
@@ -384,7 +385,7 @@ def alocating_pings(current_postion):
                 safes.append((next_x,next_y))
     if((cur_y !=0 )):
         next_x = cur_X
-        next_y = cur_y - 1
+        next_y = cur_y-1
         total_board[next_x][next_y].determine_tile_safeness(array_of_pings)
         if(total_board[next_x][next_y].safe ==True):
             if (next_x,next_y) in safes:

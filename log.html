@@ -133,7 +133,7 @@
 Navigate back to the start when the gold is found. 
         </li>
          <li>
-Generally figure out how to successfully get to the gold. (still can't shoot the Wumpus)
+Generally figure out how to successfully get to the gold; the only unimplemented feature was shooting the Wumpus.
         </li>
         </ul>
 
@@ -143,10 +143,43 @@ Generally figure out how to successfully get to the gold. (still can't shoot the
         Started code for turning and moving to an adjacent square.
           <ul>
             <li>
-              Unfortunately, this was imprecise and buggy, since one of the sensors occasionally turns itself permanently off for some reason
+              Unfortunately, this was imprecise and buggy, since one of the sensors occasionally turned itself permanently off for no apparent reason.
             </li>
             <li>
-              In the hopes of making the sensors as accurate as possible, we used a screwdriver to calibrate them. Unfortunately, it didn't fix the sensor issue.
+              In the hopes of making the sensors as accurate as possible, we used a screwdriver to calibrate them. This did not fix the sensor issue.
+            </li>
+          </ul>
+        </li>
+
+        </ul>
+        </div>
+
+        <div>
+        <p class="day">
+        Day 5:
+        </p>
+        <ul>
+        <li>
+        Tried to fix a sensor using lines of code listed on the documentation website.
+        </li>
+        <li>
+        Finished the algorithm and implemented it into the rest of the code. Using a virtual version of the grid, the algorithm runs very well!
+        </li>
+         <li>
+        Wrote simple code to receive bluetooth signals and move to an adjacent square.
+        </li>
+
+        <li>
+        Unfortunately, none of these additions could be tested on the robot itself: when the code was put on the robot, nothing happened, despite functions running individually. 
+          <ul>
+            <li>
+              There was not even any way for us to figure out what the error was, since using the wire showed a memory allocation error. 
+            </li>
+            <li>
+              Another group tried to run their (verifiably working) code on our robot, and that also did not work. 
+            </li>
+            <li>
+              At one point, one of the wheels just spontaneously decided to not be able to turn at the same time as the other wheel. Both wheels could be run on their own.
             </li>
           </ul>
         </li>
