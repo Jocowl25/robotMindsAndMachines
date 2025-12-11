@@ -180,13 +180,6 @@ def get_bluetooth_signal(): #0 safe, dont add, 1 wumpus m, 2 pit p, 3 glitter g,
         response = ble.read()
         return values
 
-find_and_center_on_line()
-go_up()
-go_down()
-go_left()
-go_right()
-robot.stop()
-
 ##start of algorythm 
 
 
