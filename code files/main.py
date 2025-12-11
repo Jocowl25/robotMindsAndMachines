@@ -536,7 +536,7 @@ while((i<len(safes))):
         doing_moveing(found_set)
         
         i=i+1
-    #where to put move function
+    
     
 doing_moveing(found_set)
 
