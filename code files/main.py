@@ -229,13 +229,23 @@ class tile(object):
                     
                     tile.safe =True
                     return
-            tile.arr_pings_on = arr_new_ping_on             
+            tile.arr_pings_on = arr_new_ping_on 
+        if(("g" in tile.arr_pings_on)  and ("g" in arr_new_ping_on)     )   :
+                tile.arr_pings_on =["G"]
+                tile.safe =True
+                tile.gold = True
+                return
+        if(("m" in tile.arr_pings_on) and ("m" in arr_new_ping_on)     )   :
+                tile.arr_pings_on =["m"]
+                tile.wumpus_possiblity = True
+                return
         else:
             
             if(len(arr_new_ping_on)==len(tile.arr_pings_on)):
                 if((len(arr_new_ping_on)==1) and not(arr_new_ping_on[0] == tile.arr_pings_on[0] ) ):
                     tile.arr_pings_on =[]
                     tile.safe =True
+                
                 return
 
             if(len(arr_new_ping_on)<len(tile.arr_pings_on)):
