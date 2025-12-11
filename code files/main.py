@@ -2,9 +2,9 @@ from nanonav import BLE, NanoBot
 import time
 from machine import Pin
 Pin(28, Pin.OUT).on()
-
+gc.collect()
 robot = NanoBot()
-
+robot.stop()
 ble = BLE(name="NanoNav2")
 
 SEARCH_SPEED   = 20
