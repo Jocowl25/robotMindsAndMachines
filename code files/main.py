@@ -189,7 +189,7 @@ except KeyboardInterrupt:
 
 ##start of algorythm 
 
-#creation of tile objects
+
 class tile(object):
     #constuctor
     def __init__(self,tuple_int_postion_temp,arr_ping_temp=" ", arr_pings_on_temp=[],safe_temp =False):
@@ -206,6 +206,7 @@ class tile(object):
 
     def determine_tile_safeness(tile ,arr_new_ping_on):
         if(tile.gold):
+            tile.safe = True
             return
         
         if(tile.safe == True and len(tile.arr_pings_on) ==0 ):
@@ -250,7 +251,7 @@ class tile(object):
         
 
 
-#creates boards
+              
 one_wopus_space =False
 first_row = [tile([0,0]),tile([0,1]),tile([0,2]),tile([0,3])]
 second_row = [tile([1,0]),tile([1,1]),tile([1,2]),tile([1,3])]
@@ -263,6 +264,7 @@ total_board[0][0].safe =True
 def input_of_danger(current_postion):
 
     print("at location " +str(current_postion[0])+ ","+str(current_postion[1]))
+    #temp = input("give danger level ")
     temp = get_bluetooth_signal()
     
 
@@ -382,7 +384,7 @@ def alocating_pings(current_postion):
                 safes.append((next_x,next_y))
     if((cur_y !=0 )):
         next_x = cur_X
-        next_y = cur_y
+        next_y = cur_y - 1
         total_board[next_x][next_y].determine_tile_safeness(array_of_pings)
         if(total_board[next_x][next_y].safe ==True):
             if (next_x,next_y) in safes:
@@ -402,7 +404,7 @@ def  update_the_knowns_golds(current_postion):
     global gold_cords
     num_gold = 0
     ping_of_one =(-1,-1)
-    removing = True
+    removing = False
     if(total_board[current_postion[0]][current_postion[1]].gold):
         removing = True
     for k in range(4):
@@ -421,8 +423,9 @@ def  update_the_knowns_golds(current_postion):
                         elif(num_gold == 0):
                             ping_of_one = (j,k)
                         num_gold = num_gold +1
-    if(num_gold ==1):
+    if(num_gold ==1 and gold_found != True):
         total_board[ping_of_one[0]][ping_of_one[1]].gold = True
+        total_board[ping_of_one[0]][ping_of_one[1]].safe = True
         gold_cords = ping_of_one
         gold_found = True
 
@@ -488,15 +491,12 @@ def marking_as_vistited(temp_found_set):
     for i in temp_found_set:
         total_board[i[0]][i[1]].visted = True
 
-#START OF CODE
+
 i = 0
 while((i<len(safes))):
-    update_the_knowns_golds(safes[i])
-    if(gold_found):
-        plot_movement(safes[i],gold_cords,False,found_set)
-        i=i+1
-        
-    if(alocating_pings(safes[i])):
+    
+    #(safes[i]==gold_cords) or
+    if( alocating_pings(safes[i])):
         found_set = []
         plot_movement(safes[i],(0,0),False,found_set)
         marking_as_vistited(found_set)
@@ -504,7 +504,7 @@ while((i<len(safes))):
        
         break 
 
-    
+    update_the_knowns_golds(safes[i])
     update_the_knowns_wompus(safes[i])
     print(len(safes))
     next = i + 1
@@ -540,3 +540,6 @@ while((i<len(safes))):
 doing_moveing(found_set)
 
 
+
+
+    
