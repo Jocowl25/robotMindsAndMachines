@@ -24,6 +24,7 @@ body{
     background-color: rgb(222, 255, 222);
     margin-top:0;
     margin-left:0;
+    margin-right:0;
 }
 header a{
     padding-left:20px;
@@ -49,7 +50,7 @@ header a:hover{
 }
 
 .logcontainer{
-    width:60vw
+    width:max(60vw,400px)
 }
 .credit-feature{
     margin-bottom:0px;
@@ -59,7 +60,7 @@ header a:hover{
     margin:10px;
 }
 .wumpusDesc{
-    width:max(60%,450px);
+    width:max(60%,400px);
     margin-top: 5px;
     margin-bottom:5px;
     padding:0;
@@ -99,7 +100,7 @@ header,body{
 .moveTestVid{
     margin-top:10px;
     margin-bottom:10px;
-    width:50%;
+    width:max(50%,100px);
     border-radius:10px;
 }
 
@@ -108,4 +109,14 @@ header,body{
     align-items:center;
     width:75%;
     gap:20px;
+}
+ul > li > ul > li{
+    padding:2px;
+}
+ul > li{
+    padding:3px;
+}
+
+header a{
+    font-size:15px;
 }

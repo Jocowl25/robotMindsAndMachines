@@ -14,7 +14,6 @@
 </head>
   <body>
     <header>
-        header>
         <a href="./index.html">Home</a>
         <a href="./algorithm.html">The Algorithm</a>
         <a href="./log.html">Daily log</a>
@@ -186,7 +185,51 @@ Generally figure out how to successfully get to the gold; the only unimplemented
 
         </ul>
         </div>
+
+         <p class="day">
+        Day 6:
+        </p>
+        <ul>
+        <li>
+        Improved algorithm to work in certain edge cases. 
+        </li>
+        <li>
+        After a combination of miscellaneous actions, including deleting old files, reducing the code size, and replacing the battery, the robot spontaneously started to work again.
+        </li>
+         <li>
+        Fixed how the robot receives the bluetooth signal:
+          <ul>
+            <li>
+            Before, the robot didn't wait for a signal to be received. If we didn't send a signal, then the root would look for a signal, see nothing, and continue driving.
+            </li>
+            <li>
+              To fix this, the robot now sends a number to itself, over and over again, until a different number (sent by us) is received. This tells the robot to stop waiting and to use our number for determining what was detected. 
+            </li>
+          </ul>
+        </li>
+
+        <li>
+  Attempted to improve movement precision:
+          <ul>
+            <li>
+            Even when both wheels are powered by the same amount, subtle differences in motor speed and movement cause the robot to not move in a perfect straight line or to perfectly turn 90 degrees. These environmental factors also make this movement slightly different every time.
+            </li>
+            <li>
+As a result, we needed to add a way for the robot to readjust itself every time. Unfortunately, we couldn't figure out how to fix all possible misalignments by the end of this last class. 
+            <ul>
+            <li>
+It didn't help that occasionally the robot would fail to move the wheels enough to turn.
+            </li>
+            </ul>
+          </li>
+          </ul>
+        </li>
+
+        </ul>
+        </div>
     </section>
+    <br>
+    <br>
 </div>
     <script src="index.js"></script>
   </body>
