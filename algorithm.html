@@ -26,9 +26,35 @@
     <h1>
       The Algorithm
     </h1>
+    <div class="rowFlex">
+        <img class="algorithm-img" src="./media/algorithm.png"/>
+        <div class="algDesc">
+              <p >This flowchart conveys the general structure of the algorithm.</p>
 
-    <img class="algorithm-img" src="./media/algorithm.png">
-    <p>[FIX ALG TEXT LATER]</p>
+              <p >The heart of the algorithm lies within the "Update internal map" and "Navigate to the next safe space" steps.</p>
+                <p>
+                  If the robot lands on a space with a breeze or a stench,
+                  then all surrounding tiles could potentially be dangerous and are marked as such.
+                </p>
+              <p >However, if the robot lands on a square with no danger signal, then all of the surrounding tiles are safe, even if they were previously marked as dangerous before.</p>
+              <p>Thus, through process of elimination, it can be determined which tiles are actually dangerous. A similar process is used to determine which tile has the Wumpus.</p>
+        </div>
+       
+
+     </div>
+ <div class="rowFlex">
+  <div class="algDesc">
+          <p class="turnTitle">Turn 1</p>
+          <p >Starting from bottom left, robot goes up, receives a danger signal, and marks the surrounding tiles as dangerous.</p>
+        </div>
+          <img class="algTurnImg" src="./media/Turn 1.png"/>
+<div class="algDesc">
+          <p class="turnTitle">Turn 2</p>
+          <p>The robot turns around and goes to the right tile. There is no signal, so all surrounding tiles are safe (marked with yellow). Only one adjacent tile is marked dangerous, so this tile must be dangerous. The robot can now proceed to the up or right tiles.</p>
+          </div>
+          <img class="algTurnImg" src="./media/Turn 2.png"/>
+        </div>
+        <p class="algDesc">By going to every safe space on the board, the robot will eventually land on the gold space.</p>
   </div>
   <br>
 

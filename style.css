@@ -66,6 +66,7 @@ header a:hover{
     padding:0;
     text-indent:4ch;
 }
+
 h1,h2{
       font-family: "WDXL Lubrifont SC", sans-serif;
 }
@@ -94,7 +95,29 @@ header,body{
 
 .algorithm-img{
     border-radius:20px;
-    width:20vw;
+    width:clamp(200px,75%,400px)
+}
+.algDesc{
+    font-size:clamp(10px,1.5vw,16px)
+}
+.algTurnDiv{
+    width:max(33%,200px)
+}
+.algTurnImg{
+    width:50%;
+    margin-top:0;
+    border:1px solid black;
+}
+.turnTitle{
+    margin-bottom:0;
+}
+
+.rowFlex{
+        display:flex;
+    align-items:center;
+    justify-content: center;
+    gap:20px;
+    width:max(80vw,450px);
 }
 
 .moveTestVid{
