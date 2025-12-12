@@ -1,3 +1,4 @@
+# :(
 from nanonav import BLE, NanoBot
 import time
 from machine import Pin
