@@ -100,6 +100,9 @@ header,body{
 .algDesc{
     font-size:clamp(10px,1.5vw,16px)
 }
+.turnAlgDesc{
+    width:100%
+}
 .algTurnDiv{
     width:max(33%,200px)
 }
@@ -142,4 +145,27 @@ ul > li{
 
 header a{
     font-size:15px;
+}
+
+.resultsVid{
+    width: 30vw;
+    border-radius:10px;
+}
+
+.resultsDiv{
+    --pad:20vw;
+    padding-left:var(--pad);
+    padding-right:var(--pad);
+}
+
+.resultsDesc{
+    margin-top: 0px;
+    margin-bottom:0px;
+    padding:0;
+    text-indent:4ch;
+}
+
+h2{
+margin-bottom:0;
+padding-bottom:0;
 }

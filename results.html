@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wumpus - Home</title>
+  <link rel="stylesheet" href="style.css">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@200..800&family=WDXL+Lubrifont+SC&display=swap" rel="stylesheet">
+
+
+</head>
+
+<body>
+  <header>
+    <a href="./index.html">Home</a>
+    <a href="./algorithm.html">The Algorithm</a>
+    <a href="./log.html">Daily log</a>
+    <a href="./results.html">Results</a>
+    <a href="./discussion.html">Discussion</a>
+  </header>
+  <div class="flex resultsDiv">
+    <h1>
+      Results
+    </h1>
+    <p>The actual algorithm works great!</p>
+    <p>The robot, on the other hand...</p>
+    <p>Here is a video of the robot's first attempt at winning the game:</p>
+    <video class="resultsVid" controls src="media/Results.mp4"></video>
+        <div class="resultsDesc">
+             <p>It did not go well. Even though the robot knew internally where to go, its movement was too imprecise to go to its intended square, so where it thought it was became misaligned from where it actually was.</p>
+        <p>The spinning at the end is most likely from one of the motors turning too slowly for the wheel to actually move.</p>
+        <p>After this, we tried fixing the movement as best as we could. By the end of the last session each movement direction was being tested, edited, and reconstructed separately; unfortunately, there was not enough time left to be successful.</p>
+        <p>Here is the robot's final run, attempting to go forward three spaces:</p>
+        </div>
+        <video class="resultsVid" controls src="media/depression.mp4"></video>
+        <p>
+        The robot, alas, was not successful.
+        </p>
+        <h2>How did the other teams do?</h2>
+        <div  class="resultsDesc">
+        <p>Out of all of the teams, only two decided to run their robots during the robot roundup. They both managed to complete the simple puzzle, but could not complete the harder one.</p>
+        </div>
+
+        <h2>Suggestions for Improvement:</h2>
+        <div class="resultsDesc">
+            <p>If we were to do this project again, we would need to prioritize movement code first. Even though the robot's ability to move was tested relatively early on, the code to go to adjacent squares was developed far too late for it to be tested properly. Furthermore, the means of getting the robot to re-align itself would have to be thought out in much greater detail.</p>
+            <p>The algorithm could also be made more efficient by being able to figure out the gold space's location earlier and by being able to navigate directly to the gold. This would lower the number of squares the robot must traverse.</p>
+        </div>
+  <br>
+  <br>
+  <br>
+  <script src="index.js"></script>
+</body>
+
+</html>
